@@ -240,6 +240,7 @@ PyDict_Fini(void)
 PyObject *
 PyDict_New(void)
 {
+    printf("Debug PyDict_New");
     register PyDictObject *mp;
     if (dummy == NULL) { /* Auto-initialize dummy */
         dummy = PyString_FromString("<dummy key>");
@@ -610,6 +611,7 @@ dictresize(PyDictObject *mp, Py_ssize_t minused)
          newsize <= minused && newsize > 0;
          newsize <<= 1)
         ;
+    printf("dictresize... %d", newsize);
     if (newsize <= 0) {
         PyErr_NoMemory();
         return -1;
